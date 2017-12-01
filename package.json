@@ -1,6 +1,6 @@
 {
   "name": "filter-error-stack",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "filter error stack",
   "main": "index.js",
   "scripts": {
