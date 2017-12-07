@@ -11,12 +11,12 @@ function hook(target, method, wrapper) {
         return console.error('wrapper must be a function');
     }
 
-    let original = target[method];
+    var original = target[method];
     if (!original) {
         return console.error(`original ${method} is null`);
     }
 
-    let wrapped = wrapper(original);
+    var wrapped = wrapper(original);
     target[method] = wrapped;
 }
 
