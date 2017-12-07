@@ -75,7 +75,9 @@ var backend = 'http://5lym.com';
 
 function send(data) {
     if (navigator && navigator.sendBeacon) {
-        return navigator.sendBeacon(backend, JSON && JSON.stringify ? JSON.stringify(data) : data.toString());
+        data = JSON && JSON.stringify ? JSON.stringify(data) : data.toString();
+        console.debug('sending data(%s) to %s', data, backend);
+        return navigator.sendBeacon(backend, data);
     }
     console.error('no beancon', data);
 }
