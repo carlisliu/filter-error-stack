@@ -40,7 +40,7 @@ module.exports = function(options) {
     var backend = options.backend || 'http://5lym.com';
 
     hook(proto, 'open', function(open) {
-        return wrappedOpen(method, url) {
+        return function wrappedOpen(method, url) {
             var store;
             if (!(store = this._store)) {
                 store = this._store = {};
@@ -52,7 +52,7 @@ module.exports = function(options) {
     });
 
     hook(proto, 'send', function(send) {
-        return wrappedSend(data) {
+        return function wrappedSend(data) {
             var self = this;
             self._store.dataType = (typeof data);
             setTimeout(function() {
@@ -60,7 +60,7 @@ module.exports = function(options) {
                     return;
                 }
                 hook(self, 'onreadystatechange', function(onreadystatechange) {
-                    return wrappedOnreadystatechange() {
+                    return function wrappedOnreadystatechange() {
                         var store = this._store;
                         try {
                             var start, end;
