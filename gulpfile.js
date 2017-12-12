@@ -10,7 +10,7 @@ var version = require('./package.json').version;
 
 gulp.task('rollup', function() {
     return rollup({
-        entry: 'src/index.js',
+        entry: 'index.js',
         plugins: [
             json(),
             nodeResolve({
@@ -26,7 +26,7 @@ gulp.task('rollup', function() {
             format: 'iife',
             dest: `dist/bundle.js`,
             globals: {},
-            moduleName: 'filterStack',
+            moduleName: 'FS',
             interop: false,
             useStrict: false
         });
