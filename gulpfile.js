@@ -3,7 +3,6 @@ var rollup = require('rollup').rollup;
 var json = require('rollup-plugin-json');
 var commonjs = require('rollup-plugin-commonjs');
 var nodeResolve = require('rollup-plugin-node-resolve');
-var replace = require('rollup-plugin-replace');
 var uglify = require('gulp-uglify');
 var rename = require("gulp-rename");
 var version = require('./package.json').version;
