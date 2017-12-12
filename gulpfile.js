@@ -9,25 +9,27 @@ var version = require('./package.json').version;
 
 gulp.task('rollup', function() {
     return rollup({
-        entry: 'index.js',
+        input: 'index.js',
         plugins: [
             json(),
             nodeResolve({
                 jsnext: true,
                 main: true,
                 browser: true,
-                externals: []
+                externals: ['window']
             }),
             commonjs()
         ]
     }).then(function(bundle) {
         return bundle.write({
             format: 'iife',
-            dest: `dist/bundle.js`,
-            globals: {},
-            moduleName: 'FS',
+            file: `dist/bundle.js`,
+            globals: {
+                window: 'window',
+            },
+            name: 'FS',
             interop: false,
-            useStrict: false
+            strict: false
         });
     }, function(error) {
         console.error(error);
