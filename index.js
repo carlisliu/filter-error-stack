@@ -20,8 +20,10 @@ function hook(target, method, wrapper) {
     target[method] = wrapped;
 }
 
-var proto = window.XMLHttpRequst && window.XMLHttpRequst.prototype;
+var proto = window.XMLHttpRequest && window.XMLHttpRequest.prototype;
 var navigator = window.navigator;
+var setTimeout = window.setTimeout;
+var console = window.console;
 
 function now() {
     return +new Date();
@@ -36,7 +38,8 @@ function upload(backend, data) {
     console.error('no beancon', data);
 }
 
-module.exports = function(options) {
+export default function(options) {
+    options = options || {};
     var backend = options.backend || 'http://5lym.com';
 
     hook(proto, 'open', function(open) {
