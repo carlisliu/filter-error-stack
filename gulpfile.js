@@ -48,6 +48,6 @@ gulp.task('default', ['rollup'], function() {
             },
             ie8: true
         }))
-        .pipe(rename(`filter-stack.mim.js`))
+        .pipe(rename(`filter-stack.min.js`))
         .pipe(gulp.dest('dist/'));
 });
